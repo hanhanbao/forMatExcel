@@ -10,17 +10,17 @@ check=input('请输入转化为√的区域：')
 c=ws[check]
 for i in tuple(c):
     for each in i:
-        print(each.value)
+        # print(each.value)
         if each.value!=None:
             each.value='√'
-        print(each.value)
-
+        # print(each.value)
+print('格式化完成！')
 
 check=input('请输入日期格式化的区域：')
 c=ws[check]
 for i in tuple(c):
     for each in i:
-        print(each.value)
+        # print(each.value)
         t=each.value
         i=datetime.datetime.now()
         if t==None:
@@ -37,7 +37,10 @@ for i in tuple(c):
             timeStruct = time.strptime(str(i.year)+'年'+t, "%Y年%m月%d日")
         elif re.match('^\d{4}\.\d{1,2}\.\d{1,2}',t,)!=None:
             timeStruct = time.strptime(t, "%Y.%m.%d")
+        else:
+            continue
         strTime = time.strftime("%Y.%m.%d", timeStruct)
         each.value=strTime
+print('格式化完成！')
 wb.save(excel)
 wb.close()
